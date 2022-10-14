@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### private resource ###
-./src/main/resources/*
+*.properties
