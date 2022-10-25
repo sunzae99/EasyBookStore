@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.easybookstore.backend.model.Users;
 import com.easybookstore.backend.request.UserRequest;
 import com.easybookstore.backend.response.UserResponse;
 import com.easybookstore.backend.service.UserService;
@@ -24,10 +23,10 @@ public class UserController {
 	@Autowired
 	UserService service;
 	
-	@CrossOrigin(origins = "http://localhost:3000")//cors access for the frontend
+	@CrossOrigin(origins = "http://localhost:3000")//CORS access for the Front-end
 	@GetMapping("/users")
-	public ResponseEntity<List<Users>> getUsers(){
-		List<Users> userList = new LinkedList<>();
+	public ResponseEntity<List<UserResponse>> getUsers(){
+		List<UserResponse> userList = new LinkedList<>();
 		userList =  service.getUsers();
 		if(userList.isEmpty()) {
 			return new ResponseEntity<>(userList, HttpStatus.NO_CONTENT);
@@ -35,7 +34,7 @@ public class UserController {
 		return new ResponseEntity<>(userList, HttpStatus.OK);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:3000") //cors access for the frontend
+	@CrossOrigin(origins = "http://localhost:3000") //CORS access for the Front-end
 	@PostMapping("/users")
 	public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest request){
 		UserResponse response = service.createUser(request);

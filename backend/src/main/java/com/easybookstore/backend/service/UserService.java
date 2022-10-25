@@ -44,18 +44,24 @@ public class UserService {
 		}
 	}
 	
-	public List<Users> getUsers() {
+	public List<UserResponse> getUsers() {
 		List<Users> response = new LinkedList<>();
+		List<UserResponse> supplied_res = new LinkedList<>();
 		try {
 			response = userDao.findAll();
-			return  response;
+			for(Users res : response) {
+				supplied_res.add(usersToResponse(res));
+			}
+			return  supplied_res;
 			
 		}catch(Exception e) {
 			System.out.println("Exception: "+ e);
-			return  response;
+			return  supplied_res;
 			
 		}	
 	}
+	
+	
 	
 	public UserResponse usersToResponse(Users users) {
 		UserResponse response = new UserResponse();
