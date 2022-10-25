@@ -35,11 +35,11 @@ public class UserController {
 		return new ResponseEntity<>(userList, HttpStatus.OK);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/users")
 	public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest request){
 		UserResponse response = service.createUser(request);
-		
-		if(response.getId() != null) {
+		if(response.getId() == null) {
 			return new ResponseEntity<>(response, HttpStatus.I_AM_A_TEAPOT);
 		}
 		return new ResponseEntity<>(response, HttpStatus.CREATED);
