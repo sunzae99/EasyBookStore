@@ -43,6 +43,7 @@ const SignUp = () => {
 
   return (
     <>
+      <h1>Add User</h1>
       <article className="form">
         <form onSubmit={handleSubmit} autoComplete="on">
           <div>

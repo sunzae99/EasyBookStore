@@ -14,6 +14,9 @@ const UseApiUpdate = () => {
     const data = await response.json();
     setUsers(data);
     console.log(data);
+    // if (response.status === 200) {
+    //   alert("User Fetched");
+    // }
   };
 
   useEffect(() => {
@@ -22,16 +25,16 @@ const UseApiUpdate = () => {
 
   return (
     <>
-      <h1>Hello World</h1>
+      <h1>Current Users List</h1>
       <ul>
         {users.map((user) => {
-          const { userId, userName, email, address, password, phone } = user;
+          const { id, name, email, address, phone } = user;
           return (
-            <li key={userId}>
-              <h2>{userName}</h2>
+            <li key={id}>
+              <h2>{id}</h2>
+              <h2>{name}</h2>
               <h4>{email}</h4>
               <h4>{address}</h4>
-              <h4>{password}</h4>
               <h4>{phone}</h4>
             </li>
           );
