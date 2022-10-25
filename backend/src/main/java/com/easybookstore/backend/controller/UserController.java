@@ -24,7 +24,7 @@ public class UserController {
 	@Autowired
 	UserService service;
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "http://localhost:3000")//cors access for the frontend
 	@GetMapping("/users")
 	public ResponseEntity<List<Users>> getUsers(){
 		List<Users> userList = new LinkedList<>();
@@ -35,12 +35,12 @@ public class UserController {
 		return new ResponseEntity<>(userList, HttpStatus.OK);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "http://localhost:3000") //cors access for the frontend
 	@PostMapping("/users")
 	public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest request){
 		UserResponse response = service.createUser(request);
 		if(response.getId() == null) {
-			return new ResponseEntity<>(response, HttpStatus.I_AM_A_TEAPOT);
+			return new ResponseEntity<>(response, HttpStatus.NOT_IMPLEMENTED);
 		}
 		return new ResponseEntity<>(response, HttpStatus.CREATED);
 		
