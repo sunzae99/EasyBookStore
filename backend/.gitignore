@@ -34,3 +34,4 @@ build/
 
 ### private resource ###
 *.properties
+/.apt_generated_tests/

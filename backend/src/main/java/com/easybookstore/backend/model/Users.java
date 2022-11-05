@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.easybookstore.backend.enums.authority;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,5 +38,7 @@ public class Users {
 	@Column(nullable=false)
 	private String address;
 	
+	@Column(nullable=false)
+	private authority role;
 	
 }

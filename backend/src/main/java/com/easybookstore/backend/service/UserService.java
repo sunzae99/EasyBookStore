@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.easybookstore.backend.dao.UserDao;
+import com.easybookstore.backend.enums.authority;
 import com.easybookstore.backend.model.Users;
 import com.easybookstore.backend.request.UserRequest;
 import com.easybookstore.backend.response.BaseUserResponse;
@@ -29,6 +30,7 @@ public class UserService {
 			users.setUserName(request.getName());
 			users.setAddress(request.getAddress());
 			users.setEmail(request.getEmail());
+			users.setRole(authority.user);
 			if (request.getPassword().equals(request.getRe_password())) {
 				users.setPassword(request.getPassword());
 			}
