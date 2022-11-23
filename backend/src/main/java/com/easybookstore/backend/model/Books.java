@@ -1,12 +1,18 @@
 package com.easybookstore.backend.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.easybookstore.backend.enums.genre;
 
@@ -19,14 +25,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Books {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long isbn;
 
     @Column(nullable = false)
     private String name;
 
+    // @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private List<genre> genre;
+    @ElementCollection //used when we need to add a list of item;
+    private List<genre> genre= new ArrayList<>();;
 
+    private Integer publishedYear;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "authId")
+    private Author author;
 }

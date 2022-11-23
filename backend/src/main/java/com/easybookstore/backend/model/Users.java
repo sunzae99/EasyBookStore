@@ -41,4 +41,7 @@ public class Users {
 	@Column(nullable=false)
 	private authority role;
 	
+	@Column(nullable=true)
+	private Boolean isVerfied;
+	
 }
